@@ -14,26 +14,30 @@ public class App {
 
 		session.beginTransaction();
 
-		Libro libro = new Libro();
-        libro.setStockCode("7052");
-        libro.setStockName("PADINI");
+		Libro libro1 = new Libro();
+        libro1.setTitolo("Paladino");
+        libro1.setGenere("Della Giustizzia");
  
-        Persona category1 = new Persona("CONSUMER", "CONSUMER COMPANY");
+        Persona persona1 = new Persona("Frank", "Kessy","1990-10-10","Sarem","Sarem","No");
         //new category, need save to get the id first
-        session.save(category1);
+        session.save(libro1);
         
         //Category category1 = (Category)session.get(Category.class, 8);
         
         PersonaLibro personaLibro = new PersonaLibro();
         
-        personaLibro.setStock(libro);
-        personaLibro.setCategory(category1);
-        personaLibro.setCreatedDate(new Date());
-        personaLibro.setCreatedBy("system");
+        personaLibro.setLibro(libro1);
+        personaLibro.setPersona(persona1);
+        personaLibro.setGiorni_possesso(1);
+        personaLibro.setGiorni_scadenza(80);
+        personaLibro.setData_restituzione("2020-04-10");
+        personaLibro.setData_prestito("2020-01-10");
+
         
-        libro.getStockCategories().add(personaLibro);
         
-        session.save(libro);
+        libro1.getPersonaLibri().add(personaLibro);
+        
+        session.save(libro1);
        
 		session.getTransaction().commit();
 		System.out.println("Done");
