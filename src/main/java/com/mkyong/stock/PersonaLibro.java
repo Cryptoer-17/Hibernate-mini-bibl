@@ -14,16 +14,20 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "stock_category", catalog = "mkyongdb")
+@Table(name = "persona_has_libro", catalog = "minibibl")
 @AssociationOverrides({
-		@AssociationOverride(name = "pk.stock", joinColumns = @JoinColumn(name = "STOCK_ID")),
-		@AssociationOverride(name = "pk.category", joinColumns = @JoinColumn(name = "CATEGORY_ID")) })
+		@AssociationOverride(name = "pk.libro", joinColumns = @JoinColumn(name = "idLibro")),
+		@AssociationOverride(name = "pk.persona", joinColumns = @JoinColumn(name = "idPersona")) })
 public class PersonaLibro implements java.io.Serializable {
 
 	private PersonaLibroId pk = new PersonaLibroId();
-	private Date createdDate;
-	private String createdBy;
-
+	private int giorni_possesso;
+	private int giorni_scadenza;
+	private String data_restituzione;
+	private String data_prestito;
+	private int giorni_ritardo_restuzione;
+	
+	
 	public PersonaLibro() {
 	}
 
@@ -37,58 +41,69 @@ public class PersonaLibro implements java.io.Serializable {
 	}
 
 	@Transient
-	public Libro getStock() {
-		return getPk().getStock();
+	public Libro getLibro() {
+		return getPk().getLibro();
 	}
 
-	public void setStock(Libro libro) {
-		getPk().setStock(libro);
+	public void setLibro(Libro libro) {
+		getPk().setLibro(libro);
 	}
 
 	@Transient
-	public Persona getCategory() {
-		return getPk().getCategory();
+	public Persona getPersona() {
+		return getPk().getPersona();
 	}
 
-	public void setCategory(Persona persona) {
-		getPk().setCategory(persona);
+	public void setPersona(Persona persona) {
+		getPk().setPersona(persona);
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "CREATED_DATE", nullable = false, length = 10)
-	public Date getCreatedDate() {
-		return this.createdDate;
+	
+	@Column(name = "GiorniPossesso", nullable = false)
+	public int getGiorni_possesso() {
+		return giorni_possesso;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setGiorni_possesso(int giorni_possesso) {
+		this.giorni_possesso = giorni_possesso;
 	}
 
-	@Column(name = "CREATED_BY", nullable = false, length = 10)
-	public String getCreatedBy() {
-		return this.createdBy;
+	@Column(name = "GiorniScadenza", nullable = false)
+	public int getGiorni_scadenza() {
+		return giorni_scadenza;
 	}
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	public void setGiorni_scadenza(int giorni_scadenza) {
+		this.giorni_scadenza = giorni_scadenza;
 	}
 
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-
-		PersonaLibro that = (PersonaLibro) o;
-
-		if (getPk() != null ? !getPk().equals(that.getPk())
-				: that.getPk() != null)
-			return false;
-
-		return true;
+	@Column(name = "DataRestituzione", nullable = false)
+	public String getData_restituzione() {
+		return data_restituzione;
 	}
 
-	public int hashCode() {
-		return (getPk() != null ? getPk().hashCode() : 0);
+	public void setData_restituzione(String data_restituzione) {
+		this.data_restituzione = data_restituzione;
 	}
+	
+	
+	@Column(name = "DataPrestito", nullable = false)
+	public String getData_prestito() {
+		return data_prestito;
+	}
+
+	public void setData_prestito(String data_prestito) {
+		this.data_prestito = data_prestito;
+	}
+	
+	@Column(name = "GiorniRitardoRestituzione", nullable = false)
+	public int getGiorni_ritardo_restuzione() {
+		return giorni_ritardo_restuzione;
+	}
+
+	public void setGiorni_ritardo_restuzione(int giorni_ritardo_restuzione) {
+		this.giorni_ritardo_restuzione = giorni_ritardo_restuzione;
+	}
+	
+
 }
