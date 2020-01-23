@@ -2,12 +2,14 @@ package com.mkyong;
 
 import java.util.Date;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.mkyong.stock.Persona;
 import com.mkyong.stock.Libro;
 import com.mkyong.stock.PersonaLibro;
 import com.mkyong.util.HibernateUtil;
 
-public class App {
+public class AppTest {
 	public static void main(String[] args) {
 		System.out.println("Hibernate many to many - join table + extra column (Annotation)");
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -23,7 +25,7 @@ public class App {
         
         
         System.out.println(persona1);
-        session.save(libro1);
+        session.save(persona1);
 
         //Category category1 = (Category)session.get(Category.class, 8);
        
@@ -38,12 +40,13 @@ public class App {
 
         
        
-        System.out.println(personaLibro);
-        libro1.getPersonaLibri().add(personaLibro);
-        
-    //    session.save(libro1);
        
-		session.getTransaction().commit();
+        System.out.println("\n"+libro1.getPersonaLibri().add(personaLibro));
+        
+        session.save(libro1);
+       
+        Transaction transaction = session.getTransaction();
+        transaction.commit();
 		System.out.println("Done");
 	}
 }

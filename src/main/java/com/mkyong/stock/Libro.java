@@ -71,12 +71,11 @@ public class Libro implements java.io.Serializable {
 		this.genere = genere;
 	}
 
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.libro", cascade=CascadeType.ALL)
 	public Set<PersonaLibro> getPersonaLibri() {
-		return this.personaLibri;
+		return personaLibri;
 	}
-
-	
 
 	public void setPersonaLibri(Set<PersonaLibro> personaLibri) {
 		this.personaLibri = personaLibri;

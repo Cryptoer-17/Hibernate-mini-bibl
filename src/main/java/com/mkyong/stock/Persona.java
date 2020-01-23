@@ -31,9 +31,6 @@ public class Persona implements java.io.Serializable {
 
 
 
-	
-	
-
 
 	public Persona(String nome, String cognome, String data_nascita, String username,
 			String password, String admin) {
