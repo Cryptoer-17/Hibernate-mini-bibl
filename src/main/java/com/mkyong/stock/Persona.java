@@ -14,64 +14,145 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "category", catalog = "mkyongdb")
+@Table(name = "persona", catalog = "minibibl")
 public class Persona implements java.io.Serializable {
 
-	private Integer categoryId;
-	private String name;
-	private String desc;
-	private Set<PersonaLibro> personaLibros = new HashSet<PersonaLibro>(0);
+	private Integer idPersona;
+	private String nome;
+	private String cognome;
+	private String data_nascita;
+	private String username;
+	private String password;
+	private String admin;
+	private Set<PersonaLibro> personaLibri = new HashSet<PersonaLibro>(0);
 
 	public Persona() {
 	}
 
-	public Persona(String name, String desc) {
-		this.name = name;
-		this.desc = desc;
+
+
+	public Persona(String nome, String cognome, String data_nascita, String username, String password, String admin) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.data_nascita = data_nascita;
+		this.username = username;
+		this.password = password;
+		this.admin = admin;
 	}
 
-	public Persona(String name, String desc, Set<PersonaLibro> personaLibros) {
-		this.name = name;
-		this.desc = desc;
-		this.personaLibros = personaLibros;
+
+	public Persona(String nome, String cognome, String data_nascita, String username, String password, String admin,
+			Set<PersonaLibro> personaLibri) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.data_nascita = data_nascita;
+		this.username = username;
+		this.password = password;
+		this.admin = admin;
+		this.personaLibri = personaLibri;
 	}
+
+
+
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "CATEGORY_ID", unique = true, nullable = false)
-	public Integer getCategoryId() {
-		return this.categoryId;
+	@Column(name = "idPersona", unique = true, nullable = false)
+	public Integer getIdPersona() {
+		return idPersona;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+
+
+	public void setIdPersona(Integer idPersona) {
+		this.idPersona = idPersona;
 	}
 
-	@Column(name = "NAME", nullable = false, length = 10)
-	public String getName() {
-		return this.name;
+	@Column(name = "Nome", nullable = false, length = 10)
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	
+	
+	@Column(name = "Cognome", nullable = false)
+	public String getCognome() {
+		return cognome;
 	}
 
-	@Column(name = "[DESC]", nullable = false)
-	public String getDesc() {
-		return this.desc;
+
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+
+	
+	
+	@Column(name = "DataNascita", nullable = false)
+	public String getData_nascita() {
+		return data_nascita;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.category")
-	public Set<PersonaLibro> getStockCategories() {
-		return this.personaLibros;
+
+
+	public void setData_nascita(String data_nascita) {
+		this.data_nascita = data_nascita;
 	}
 
-	public void setStockCategories(Set<PersonaLibro> personaLibros) {
-		this.personaLibros = personaLibros;
+	
+	
+	@Column(name = "Username", nullable = false)
+	public String getUsername() {
+		return username;
+	}
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+
+	@Column(name = "Password", nullable = false)
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Column(name = "Administ", nullable = false)
+	public String getAdmin() {
+		return admin;
+	}
+
+
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.persona")
+	public Set<PersonaLibro> getPersonaLibri() {
+		return personaLibri;
+	}
+
+
+
+	public void setPersonaLibri(Set<PersonaLibro> personaLibri) {
+		this.personaLibri = personaLibri;
 	}
 
 }
