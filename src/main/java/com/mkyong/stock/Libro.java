@@ -43,11 +43,11 @@ public class Libro implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idLibro", unique = true, nullable = false)
-	public Integer getStockId() {
-		return this.idLibro;
+	public Integer getIdLibro() {
+		return idLibro;
 	}
 
-	public void setStockId(Integer idLibro) {
+	public void setIdLibro(Integer idLibro) {
 		this.idLibro = idLibro;
 	}
 
@@ -55,6 +55,8 @@ public class Libro implements java.io.Serializable {
 	public String getTitolo() {
 		return titolo;
 	}
+
+	
 
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;

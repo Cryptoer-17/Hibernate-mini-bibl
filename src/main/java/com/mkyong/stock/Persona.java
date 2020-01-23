@@ -31,7 +31,12 @@ public class Persona implements java.io.Serializable {
 
 
 
-	public Persona(String nome, String cognome, String data_nascita, String username, String password, String admin) {
+	
+	
+
+
+	public Persona(String nome, String cognome, String data_nascita, String username,
+			String password, String admin) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.data_nascita = data_nascita;
@@ -41,8 +46,23 @@ public class Persona implements java.io.Serializable {
 	}
 
 
-	public Persona(String nome, String cognome, String data_nascita, String username, String password, String admin,
-			Set<PersonaLibro> personaLibri) {
+
+	public Persona(Integer idPersona, String nome, String cognome, String data_nascita, String username,
+			String password, String admin) {
+		this.idPersona = idPersona;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.data_nascita = data_nascita;
+		this.username = username;
+		this.password = password;
+		this.admin = admin;
+	}
+
+
+
+	public Persona(Integer idPersona, String nome, String cognome, String data_nascita, String username,
+			String password, String admin, Set<PersonaLibro> personaLibri) {
+		this.idPersona = idPersona;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.data_nascita = data_nascita;
@@ -54,10 +74,9 @@ public class Persona implements java.io.Serializable {
 
 
 
-
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "idPersona", unique = true, nullable = false)
+	@Column(name = "idPersona")
 	public Integer getIdPersona() {
 		return idPersona;
 	}
@@ -67,11 +86,18 @@ public class Persona implements java.io.Serializable {
 	public void setIdPersona(Integer idPersona) {
 		this.idPersona = idPersona;
 	}
+	
+	
+	
 
 	@Column(name = "Nome", nullable = false, length = 10)
 	public String getNome() {
 		return nome;
 	}
+
+
+
+	
 
 
 
@@ -154,5 +180,15 @@ public class Persona implements java.io.Serializable {
 	public void setPersonaLibri(Set<PersonaLibro> personaLibri) {
 		this.personaLibri = personaLibri;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Persona [idPersona=" + idPersona + ", nome=" + nome + ", cognome=" + cognome + ", data_nascita="
+				+ data_nascita + ", username=" + username + ", password=" + password + ", admin=" + admin + "]";
+	}
+	
+	
 
 }

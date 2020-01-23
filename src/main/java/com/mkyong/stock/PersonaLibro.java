@@ -1,6 +1,5 @@
 package com.mkyong.stock;
 
-import java.util.Date;
 
 import javax.persistence.AssociationOverride;
 import javax.persistence.AssociationOverrides;
@@ -9,8 +8,6 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -103,6 +100,13 @@ public class PersonaLibro implements java.io.Serializable {
 
 	public void setGiorni_ritardo_restuzione(int giorni_ritardo_restuzione) {
 		this.giorni_ritardo_restuzione = giorni_ritardo_restuzione;
+	}
+
+	@Override
+	public String toString() {
+		return "PersonaLibro [pk=" + pk + ", giorni_possesso=" + giorni_possesso + ", giorni_scadenza="
+				+ giorni_scadenza + ", data_restituzione=" + data_restituzione + ", data_prestito=" + data_prestito
+				+ ", giorni_ritardo_restuzione=" + giorni_ritardo_restuzione + "]";
 	}
 	
 

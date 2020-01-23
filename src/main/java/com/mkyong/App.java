@@ -20,10 +20,13 @@ public class App {
  
         Persona persona1 = new Persona("Frank", "Kessy","1990-10-10","Sarem","Sarem","No");
         //new category, need save to get the id first
+        
+        
+        System.out.println(persona1);
         session.save(libro1);
-        
+
         //Category category1 = (Category)session.get(Category.class, 8);
-        
+       
         PersonaLibro personaLibro = new PersonaLibro();
         
         personaLibro.setLibro(libro1);
@@ -34,10 +37,11 @@ public class App {
         personaLibro.setData_prestito("2020-01-10");
 
         
-        
+       
+        System.out.println(personaLibro);
         libro1.getPersonaLibri().add(personaLibro);
         
-        session.save(libro1);
+    //    session.save(libro1);
        
 		session.getTransaction().commit();
 		System.out.println("Done");
