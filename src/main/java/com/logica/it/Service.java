@@ -36,7 +36,7 @@ public class Service {
 	   	 //Se psw=confirmpsw insert utente else deve rifare la procedura
 	   	 if(password.equals(confirm_password)) {
 	   	 contatto_pronto=true;
-//	   	 BibliotecaDAO.insertPersona(nome,cognome,dataNascita,username,password);
+	   	 BibliotecaDAO.insertPersona(nome,cognome,dataNascita,username,password);
 	   	 }
 	   	 else System.out.println("Le due passowrd non corrispondo");
 	    }while(!contatto_pronto);

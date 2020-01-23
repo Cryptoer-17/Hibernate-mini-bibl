@@ -10,8 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "persona", catalog = "minibibl")
@@ -26,6 +29,12 @@ public class Persona implements java.io.Serializable {
 	private String admin;
 	private Set<PersonaLibro> personaLibri = new HashSet<PersonaLibro>(0);
 
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idAccount")
+	private AccountUtente accountutente;
+	
+	
 	public Persona() {
 	}
 
@@ -177,6 +186,19 @@ public class Persona implements java.io.Serializable {
 	public void setPersonaLibri(Set<PersonaLibro> personaLibri) {
 		this.personaLibri = personaLibri;
 	}
+
+
+	public AccountUtente getAccountutente() {
+		return accountutente;
+	}
+
+
+
+
+	public void setAccountutente(AccountUtente accountutente) {
+		this.accountutente = accountutente;
+	}
+
 
 
 

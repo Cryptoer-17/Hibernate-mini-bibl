@@ -5,14 +5,15 @@ import java.sql.SQLException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
+import com.mkyong.stock.*;
 
 
 public class BibliotecaDAO {
 
-/*	
-	public static void insertPersona(String Nome,String Cognome,String DataNascita,String Username,String Psw) throws SQLException, ClassNotFoundException{		  
-		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(AccountUtente.class).addAnnotatedClass(Autore.class).addAnnotatedClass(Biblioteca.class).addAnnotatedClass(Libro.class).addAnnotatedClass(Persona.class).buildSessionFactory();			
+
+	public static void insertPersona(String Nome,String Cognome,String DataNascita,String Username,String Psw) throws SQLException, ClassNotFoundException{	
+		System.out.println("qui");
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(AccountUtente.class).addAnnotatedClass(Persona.class).buildSessionFactory();			
 	    Session session = factory.getCurrentSession();	
 	    try {
 	    	session.beginTransaction();	
@@ -40,5 +41,5 @@ public class BibliotecaDAO {
 		    	session.close();
 		    }
 			
-	}*/
+	}
 }
