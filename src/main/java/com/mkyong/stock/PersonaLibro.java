@@ -18,40 +18,40 @@ import javax.persistence.Transient;
 @AssociationOverrides({
 		@AssociationOverride(name = "pk.stock", joinColumns = @JoinColumn(name = "STOCK_ID")),
 		@AssociationOverride(name = "pk.category", joinColumns = @JoinColumn(name = "CATEGORY_ID")) })
-public class StockCategory implements java.io.Serializable {
+public class PersonaLibro implements java.io.Serializable {
 
-	private StockCategoryId pk = new StockCategoryId();
+	private PersonaLibroId pk = new PersonaLibroId();
 	private Date createdDate;
 	private String createdBy;
 
-	public StockCategory() {
+	public PersonaLibro() {
 	}
 
 	@EmbeddedId
-	public StockCategoryId getPk() {
+	public PersonaLibroId getPk() {
 		return pk;
 	}
 
-	public void setPk(StockCategoryId pk) {
+	public void setPk(PersonaLibroId pk) {
 		this.pk = pk;
 	}
 
 	@Transient
-	public Stock getStock() {
+	public Libro getStock() {
 		return getPk().getStock();
 	}
 
-	public void setStock(Stock stock) {
-		getPk().setStock(stock);
+	public void setStock(Libro libro) {
+		getPk().setStock(libro);
 	}
 
 	@Transient
-	public Category getCategory() {
+	public Persona getCategory() {
 		return getPk().getCategory();
 	}
 
-	public void setCategory(Category category) {
-		getPk().setCategory(category);
+	public void setCategory(Persona persona) {
+		getPk().setCategory(persona);
 	}
 
 	@Temporal(TemporalType.DATE)
@@ -79,7 +79,7 @@ public class StockCategory implements java.io.Serializable {
 		if (o == null || getClass() != o.getClass())
 			return false;
 
-		StockCategory that = (StockCategory) o;
+		PersonaLibro that = (PersonaLibro) o;
 
 		if (getPk() != null ? !getPk().equals(that.getPk())
 				: that.getPk() != null)

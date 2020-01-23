@@ -2,9 +2,9 @@ package com.mkyong;
 
 import java.util.Date;
 import org.hibernate.Session;
-import com.mkyong.stock.Category;
-import com.mkyong.stock.Stock;
-import com.mkyong.stock.StockCategory;
+import com.mkyong.stock.Persona;
+import com.mkyong.stock.Libro;
+import com.mkyong.stock.PersonaLibro;
 import com.mkyong.util.HibernateUtil;
 
 public class App {
@@ -14,26 +14,26 @@ public class App {
 
 		session.beginTransaction();
 
-		Stock stock = new Stock();
-        stock.setStockCode("7052");
-        stock.setStockName("PADINI");
+		Libro libro = new Libro();
+        libro.setStockCode("7052");
+        libro.setStockName("PADINI");
  
-        Category category1 = new Category("CONSUMER", "CONSUMER COMPANY");
+        Persona category1 = new Persona("CONSUMER", "CONSUMER COMPANY");
         //new category, need save to get the id first
         session.save(category1);
         
         //Category category1 = (Category)session.get(Category.class, 8);
         
-        StockCategory stockCategory = new StockCategory();
+        PersonaLibro personaLibro = new PersonaLibro();
         
-        stockCategory.setStock(stock);
-        stockCategory.setCategory(category1);
-        stockCategory.setCreatedDate(new Date());
-        stockCategory.setCreatedBy("system");
+        personaLibro.setStock(libro);
+        personaLibro.setCategory(category1);
+        personaLibro.setCreatedDate(new Date());
+        personaLibro.setCreatedBy("system");
         
-        stock.getStockCategories().add(stockCategory);
+        libro.getStockCategories().add(personaLibro);
         
-        session.save(stock);
+        session.save(libro);
        
 		session.getTransaction().commit();
 		System.out.println("Done");

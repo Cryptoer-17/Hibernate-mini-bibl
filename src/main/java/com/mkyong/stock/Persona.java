@@ -15,25 +15,25 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "category", catalog = "mkyongdb")
-public class Category implements java.io.Serializable {
+public class Persona implements java.io.Serializable {
 
 	private Integer categoryId;
 	private String name;
 	private String desc;
-	private Set<StockCategory> stockCategories = new HashSet<StockCategory>(0);
+	private Set<PersonaLibro> personaLibros = new HashSet<PersonaLibro>(0);
 
-	public Category() {
+	public Persona() {
 	}
 
-	public Category(String name, String desc) {
+	public Persona(String name, String desc) {
 		this.name = name;
 		this.desc = desc;
 	}
 
-	public Category(String name, String desc, Set<StockCategory> stockCategories) {
+	public Persona(String name, String desc, Set<PersonaLibro> personaLibros) {
 		this.name = name;
 		this.desc = desc;
-		this.stockCategories = stockCategories;
+		this.personaLibros = personaLibros;
 	}
 
 	@Id
@@ -66,12 +66,12 @@ public class Category implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.category")
-	public Set<StockCategory> getStockCategories() {
-		return this.stockCategories;
+	public Set<PersonaLibro> getStockCategories() {
+		return this.personaLibros;
 	}
 
-	public void setStockCategories(Set<StockCategory> stockCategories) {
-		this.stockCategories = stockCategories;
+	public void setStockCategories(Set<PersonaLibro> personaLibros) {
+		this.personaLibros = personaLibros;
 	}
 
 }
