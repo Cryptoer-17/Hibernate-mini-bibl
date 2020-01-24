@@ -15,19 +15,29 @@ public class AccountUtente {
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
 		@Column(name="idAccount")
 		public int idAccount; 
+
+
+		private Persona persona;
 		
 		
 		@Column(name="Attivato")
 		public int Attivato;
-
-
-		
 		
 		
 		
 		public AccountUtente() {
 		
 		}
+
+		
+		
+
+		public AccountUtente(int idAccount, int attivato) {
+			this.idAccount = idAccount;
+			Attivato = attivato;
+		}
+
+
 
 
 		public AccountUtente(int attivato) {
@@ -60,6 +70,22 @@ public class AccountUtente {
 		public void setIdAccount(int idAccount) {
 			this.idAccount = idAccount;
 		}
+
+
+
+
+		public Persona getPersona() {
+			return persona;
+		}
+
+
+
+
+		public void setPersona(Persona persona) {
+			this.persona = persona;
+		}
+		
+		
 		
 		
 }

@@ -2,36 +2,19 @@ package com.mkyong;
 
 import java.util.Date;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.mkyong.stock.Persona;
-import com.mkyong.stock.AccountUtente;
 import com.mkyong.stock.Libro;
 import com.mkyong.stock.PersonaLibro;
 import com.mkyong.util.HibernateUtil;
 
-public class AppTest {
+public class App {
 	public static void main(String[] args) {
 		System.out.println("Hibernate many to many - join table + extra column (Annotation)");
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
-		
-
-		
-	
-		Persona persona1 = new Persona("Frank", "Kessy","1990-10-10","Sarem","Sarem","No");
-		
-		AccountUtente TempAccount =new AccountUtente(1);
-		
-		
-		persona1.setAccountutente(TempAccount);
-		
-		
-		
 		session.beginTransaction();
-		session.save(TempAccount);
-	//	session.save(persona1);
-	/*	Libro libro1 = new Libro();
+
+		Libro libro1 = new Libro();
         libro1.setTitolo("Paladino");
         libro1.setGenere("Della Giustizzia");
  
@@ -40,7 +23,7 @@ public class AppTest {
         
         
         System.out.println(persona1);
-        session.save(persona1);
+        session.save(libro1);
 
         //Category category1 = (Category)session.get(Category.class, 8);
        
@@ -55,13 +38,12 @@ public class AppTest {
 
         
        
-       
-        System.out.println("\n"+libro1.getPersonaLibri().add(personaLibro));
+        System.out.println(personaLibro);
+        libro1.getPersonaLibri().add(personaLibro);
         
-        session.save(libro1);*/
+    //    session.save(libro1);
        
-        Transaction transaction = session.getTransaction();
-        transaction.commit();
+		session.getTransaction().commit();
 		System.out.println("Done");
 	}
 }

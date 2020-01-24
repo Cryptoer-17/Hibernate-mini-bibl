@@ -27,11 +27,10 @@ public class Persona implements java.io.Serializable {
 	private String username;
 	private String password;
 	private String admin;
-	private Set<PersonaLibro> personaLibri = new HashSet<PersonaLibro>(0);
+/*	private Set<PersonaLibro> personaLibri = new HashSet<PersonaLibro>(0);*/
 
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="idAccount")
+	
 	private AccountUtente accountutente;
 	
 	
@@ -65,7 +64,7 @@ public class Persona implements java.io.Serializable {
 	}
 
 
-
+/*
 	public Persona(Integer idPersona, String nome, String cognome, String data_nascita, String username,
 			String password, String admin, Set<PersonaLibro> personaLibri) {
 		this.idPersona = idPersona;
@@ -76,7 +75,7 @@ public class Persona implements java.io.Serializable {
 		this.password = password;
 		this.admin = admin;
 		this.personaLibri = personaLibri;
-	}
+	}*/
 
 
 
@@ -96,7 +95,7 @@ public class Persona implements java.io.Serializable {
 	
 	
 
-	@Column(name = "Nome", nullable = false, length = 10)
+	@Column(name = "Nome")
 	public String getNome() {
 		return nome;
 	}
@@ -113,7 +112,7 @@ public class Persona implements java.io.Serializable {
 	
 	
 	
-	@Column(name = "Cognome", nullable = false)
+	@Column(name = "Cognome")
 	public String getCognome() {
 		return cognome;
 	}
@@ -127,7 +126,7 @@ public class Persona implements java.io.Serializable {
 
 	
 	
-	@Column(name = "DataNascita", nullable = false)
+	@Column(name = "DataNascita")
 	public String getData_nascita() {
 		return data_nascita;
 	}
@@ -140,7 +139,7 @@ public class Persona implements java.io.Serializable {
 
 	
 	
-	@Column(name = "Username", nullable = false)
+	@Column(name = "Username")
 	public String getUsername() {
 		return username;
 	}
@@ -153,7 +152,7 @@ public class Persona implements java.io.Serializable {
 
 
 
-	@Column(name = "Password", nullable = false)
+	@Column(name = "Password")
 	public String getPassword() {
 		return password;
 	}
@@ -164,7 +163,7 @@ public class Persona implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "Administ", nullable = false)
+	@Column(name = "Administ")
 	public String getAdmin() {
 		return admin;
 	}
@@ -176,7 +175,7 @@ public class Persona implements java.io.Serializable {
 	}
 
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.persona")
+/*	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.persona")
 	public Set<PersonaLibro> getPersonaLibri() {
 		return personaLibri;
 	}
@@ -185,7 +184,7 @@ public class Persona implements java.io.Serializable {
 
 	public void setPersonaLibri(Set<PersonaLibro> personaLibri) {
 		this.personaLibri = personaLibri;
-	}
+	}*/
 
 
 	public AccountUtente getAccountutente() {

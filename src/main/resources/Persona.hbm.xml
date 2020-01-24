@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 17, 2010 10:39:42 AM by Hibernate Tools 3.2.5.Beta -->
+<hibernate-mapping>
+    <class name="com.mkyong.stock.Persona" table="persona" catalog="minibibl">
+        <id name="idPersona" type="java.lang.Integer">
+            <column name="idPersona" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="Nome"  />
+        </property>
+        <property name="cognome" type="string">
+            <column name="Cognome" />
+        </property>
+        <property name="data_nascita" type="string">
+            <column name="DataNascita" />
+        </property>
+         <property name="username" type="string">
+            <column name="Username" />
+        </property>
+             <property name="password" type="string">
+            <column name="Password" />
+        </property>
+        <property name="admin" type="string">
+            <column name="Administ" />
+        </property>
+        
+        
+        <one-to-one name="accountutente" class="com.mkyong.stock.AccountUtente" cascade="save-update"></one-to-one>
+    </class>
+</hibernate-mapping>
