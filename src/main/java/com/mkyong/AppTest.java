@@ -16,21 +16,19 @@ public class AppTest {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		
-
+		System.out.println("a");
 		
 	
 		Persona persona1 = new Persona("Frank", "Kessy","1990-10-10","Sarem","Sarem","No");
 		
 		AccountUtente TempAccount =new AccountUtente(1);
 		
-		
+		TempAccount.setPersona(persona1);
 		persona1.setAccountutente(TempAccount);
-		
-		
 		
 		session.beginTransaction();
 		session.save(TempAccount);
-	//	session.save(persona1);
+		
 	/*	Libro libro1 = new Libro();
         libro1.setTitolo("Paladino");
         libro1.setGenere("Della Giustizzia");
