@@ -17,7 +17,7 @@ public class AccountUtente {
 		public int idAccount; 
 
 
-		private Persona persona;
+	
 		
 		
 		@Column(name="Attivato")
@@ -73,17 +73,6 @@ public class AccountUtente {
 
 
 
-
-		public Persona getPersona() {
-			return persona;
-		}
-
-
-
-
-		public void setPersona(Persona persona) {
-			this.persona = persona;
-		}
 		
 		
 		

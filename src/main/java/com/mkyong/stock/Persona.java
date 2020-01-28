@@ -16,21 +16,30 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name = "persona", catalog = "minibibl")
 public class Persona implements java.io.Serializable {
 
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "idPersona")
 	private Integer idPersona;
+	@Column(name = "Nome")
 	private String nome;
+	@Column(name = "Cognome")
 	private String cognome;
+	@Column(name = "DataNascita")
 	private String data_nascita;
+	@Column(name = "Username")
 	private String username;
+	@Column(name = "Password")
 	private String password;
+	@Column(name = "Administ")
 	private String admin;
 /*	private Set<PersonaLibro> personaLibri = new HashSet<PersonaLibro>(0);*/
-
-	
-	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idAccountUtente")
 	private AccountUtente accountutente;
 	
 	
@@ -79,9 +88,7 @@ public class Persona implements java.io.Serializable {
 
 
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "idPersona")
+	
 	public Integer getIdPersona() {
 		return idPersona;
 	}
@@ -95,7 +102,7 @@ public class Persona implements java.io.Serializable {
 	
 	
 
-	@Column(name = "Nome")
+	
 	public String getNome() {
 		return nome;
 	}
@@ -112,7 +119,7 @@ public class Persona implements java.io.Serializable {
 	
 	
 	
-	@Column(name = "Cognome")
+	
 	public String getCognome() {
 		return cognome;
 	}
@@ -126,7 +133,6 @@ public class Persona implements java.io.Serializable {
 
 	
 	
-	@Column(name = "DataNascita")
 	public String getData_nascita() {
 		return data_nascita;
 	}
@@ -139,7 +145,6 @@ public class Persona implements java.io.Serializable {
 
 	
 	
-	@Column(name = "Username")
 	public String getUsername() {
 		return username;
 	}
@@ -152,7 +157,7 @@ public class Persona implements java.io.Serializable {
 
 
 
-	@Column(name = "Password")
+	
 	public String getPassword() {
 		return password;
 	}
@@ -163,7 +168,7 @@ public class Persona implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "Administ")
+	
 	public String getAdmin() {
 		return admin;
 	}
